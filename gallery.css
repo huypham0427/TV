@@ -1,0 +1,33 @@
+/* CSS for displaying files at native resolution */
+#gallery-container {
+    width: 100%; /* Set the desired width for the container */
+    height: 100vh; /* Set the desired height for the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#gallery-container img {
+    max-width: 100%; /* Ensure images don't exceed their original width */
+    max-height: 100%; /* Ensure images don't exceed their original height */
+    object-fit: contain; /* Maintain aspect ratio while fitting the content */
+}
+
+#gallery-container iframe {
+    width: 100%; /* Set the width to 100% for PDFs */
+    height: 100%; /* Set the height to 100% for PDFs */
+}
+
+
+/* CSS for timer */
+#timer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,29 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload and Display</title>
+</head>
+<body>
+    <h1>Image Upload and Display</h1>
+    
+    <!-- <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="image" id="image-input">
+        <button type="submit">Upload</button>
+    </form> -->
+    
+    <form id="upload-form" data-file-type="image" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file">
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Add div elements to display messages -->
+    <div id="success-message" style="display: none; color: green;">Upload successful!</div>
+    <div id="error-message2" style="display: none; color: red;">Upload failed. Please try again.</div>
+
+    <div id="image-container"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
