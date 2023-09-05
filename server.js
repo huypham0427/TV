@@ -37,12 +37,12 @@ app.use(cors());
 
 // Handle POST request to /upload
 // app.post('/upload', upload.single('image'), (req, res) => {
-//     const imageUrl = `http://localhost:${port}/${req.file.path}`;
+//     const imageUrl = `http://hitem-tv.netlify.app:${port}/${req.file.path}`;
 //     console.log(req.file);
 //     res.json({ imageUrl });
 // });
 app.post('/upload/:type', upload.single('file'), (req, res) => {
-    const baseUrl = `https://localhost:${port}`;
+    const baseUrl = `https://hitem-tv.netlify.app:${port}`;
 
     if (req.params.type === 'image' || req.params.type === 'pdf') {
         const fileUrl = `${baseUrl}/${req.file.path}`;
@@ -55,7 +55,7 @@ app.post('/upload/:type', upload.single('file'), (req, res) => {
 app.get('/fetch-images', (req, res) => {
     // Retrieve the list of image files from the 'uploads' directory
     const imageFiles = fs.readdirSync('uploads');
-    const imageUrls = imageFiles.map(file => `https://localhost:${port}/uploads/${file}`);
+    const imageUrls = imageFiles.map(file => `https://hitem-tv.netlify.app:${port}/uploads/${file}`);
     res.json({ imageUrls });
 });
 
@@ -65,7 +65,7 @@ app.get('/fetch-files', (req, res) => {
     
     // Construct URLs for each file
     const fileUrls = fileNames.map(fileName => {
-        return `https://localhost:${port}/uploads/${fileName}`;
+        return `https://hitem-tv.netlify.app:${port}/uploads/${fileName}`;
     });
 
     res.json({ fileUrls });
