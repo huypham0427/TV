@@ -42,7 +42,7 @@ app.use(cors());
 //     res.json({ imageUrl });
 // });
 app.post('/upload/:type', upload.single('file'), (req, res) => {
-    const baseUrl = `http://35.160.120.126:${port}`;
+    const baseUrl = `https://35.160.120.126:${port}`;
 
     if (req.params.type === 'image' || req.params.type === 'pdf') {
         const fileUrl = `${baseUrl}/${req.file.path}`;
@@ -55,7 +55,7 @@ app.post('/upload/:type', upload.single('file'), (req, res) => {
 app.get('/fetch-images', (req, res) => {
     // Retrieve the list of image files from the 'uploads' directory
     const imageFiles = fs.readdirSync('uploads');
-    const imageUrls = imageFiles.map(file => `http://35.160.120.126:${port}/uploads/${file}`);
+    const imageUrls = imageFiles.map(file => `https://35.160.120.126:${port}/uploads/${file}`);
     res.json({ imageUrls });
 });
 
@@ -65,7 +65,7 @@ app.get('/fetch-files', (req, res) => {
     
     // Construct URLs for each file
     const fileUrls = fileNames.map(fileName => {
-        return `http://35.160.120.126:${port}/uploads/${fileName}`;
+        return `https://35.160.120.126:${port}/uploads/${fileName}`;
     });
 
     res.json({ fileUrls });
