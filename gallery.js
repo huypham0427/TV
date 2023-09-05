@@ -78,7 +78,7 @@ let fileUrls = []; // Initialize an empty array to store the file URLs
 // Fetch image and PDF URLs from the server
 async function fetchFiles() {
     try {
-        const response = await fetch('https://hitem-tv.netlify.app:3000/fetch-files');
+        const response = await fetch('/fetch-files');
         const data = await response.json();
         fileUrls = data.fileUrls; // Store the retrieved file URLs
         displayNextFile();
