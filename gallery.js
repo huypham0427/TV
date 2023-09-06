@@ -76,9 +76,10 @@ let fileUrls = []; // Initialize an empty array to store the file URLs
 // fetchFiles();
 
 // Fetch image and PDF URLs from the server
+// Fetch image and PDF URLs from the server
 async function fetchFiles() {
     try {
-        const response = await fetch('/fetch-files');
+        const response = await fetch('http://localhost:3000/fetch-files');
         const data = await response.json();
         fileUrls = data.fileUrls; // Store the retrieved file URLs
         displayNextFile();

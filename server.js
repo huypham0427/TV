@@ -42,7 +42,7 @@ app.use(cors());
 //     res.json({ imageUrl });
 // });
 app.post('/upload/:type', upload.single('file'), (req, res) => {
-    const baseUrl = `https://hitem-tv.netlify.app:${port}`;
+    const baseUrl = `http://localhost:${port}`;
 
     if (req.params.type === 'image' || req.params.type === 'pdf') {
         const fileUrl = `${baseUrl}/${req.file.path}`;
@@ -51,21 +51,21 @@ app.post('/upload/:type', upload.single('file'), (req, res) => {
         res.status(400).json({ error: 'Invalid file type.' });
     }
 });
-       
+
 app.get('/fetch-images', (req, res) => {
     // Retrieve the list of image files from the 'uploads' directory
     const imageFiles = fs.readdirSync('uploads');
-    const imageUrls = imageFiles.map(file => `https://hitem-tv.netlify.app:${port}/uploads/${file}`);
+    const imageUrls = imageFiles.map(file => `http://localhost:${port}/uploads/${file}`);
     res.json({ imageUrls });
 });
 
 app.get('/fetch-files', (req, res) => {
     // Retrieve the list of all files from the 'uploads' directory
     const fileNames = fs.readdirSync('uploads');
-    
+
     // Construct URLs for each file
     const fileUrls = fileNames.map(fileName => {
-        return `https://hitem-tv.netlify.app:${port}/uploads/${fileName}`;
+        return `http://localhost:${port}/uploads/${fileName}`;
     });
 
     res.json({ fileUrls });
