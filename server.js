@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const port = 3000;
+const port = 3100;
 
 // Configure Multer to handle file uploads
 const storage = multer.diskStorage({
@@ -42,7 +42,8 @@ app.use(cors());
 //     res.json({ imageUrl });
 // });
 app.post('/upload/:type', upload.single('file'), (req, res) => {
-    const baseUrl = `http://localhost:${port}`;
+    //const baseUrl = `http://localhost:${port}`; 'drupal.hitem.com/tv/TV'
+    const baseUrl = `drupal.hitem.com/tv/TV`;
 
     if (req.params.type === 'image' || req.params.type === 'pdf') {
         const fileUrl = `${baseUrl}/${req.file.path}`;
@@ -55,7 +56,7 @@ app.post('/upload/:type', upload.single('file'), (req, res) => {
 app.get('/fetch-images', (req, res) => {
     // Retrieve the list of image files from the 'uploads' directory
     const imageFiles = fs.readdirSync('uploads');
-    const imageUrls = imageFiles.map(file => `http://localhost:${port}/uploads/${file}`);
+    const imageUrls = imageFiles.map(file => `drupal.hitem.com/tv/TV/uploads/${file}`);
     res.json({ imageUrls });
 });
 
@@ -65,7 +66,7 @@ app.get('/fetch-files', (req, res) => {
 
     // Construct URLs for each file
     const fileUrls = fileNames.map(fileName => {
-        return `http://localhost:${port}/uploads/${fileName}`;
+        return `drupal.hitem.com/tv/TV/uploads/${fileName}`;
     });
 
     res.json({ fileUrls });
